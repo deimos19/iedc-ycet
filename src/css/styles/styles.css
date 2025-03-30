@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Outfit:wght@100,200,300,400,500,600,700,800,900&family=Rubik+Mono+One&display=swap');
+
 *{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 body{
     background-color: rgb(24, 24, 24);
     color: white;
@@ -9,6 +12,9 @@ body{
 .hero-heading{
     font-size: 3rem;
     font-weight: bold;
+}
+h1 {
+    font-family: 'Rubik Mono One', sans-serif;
 }
 h2,h5{
     color: rgb(136, 0, 255);
@@ -120,6 +126,12 @@ span{
     height: 400px; /* Set a fixed height for consistency */
     object-fit: cover; /* Ensures the image fills the space without distortion */
     object-position: center; /* Centers the image */
+}
+.fixed-nodal {
+    width: 100%;  /* Make the image fill the card width */
+    height: 300px; /* Set a fixed height for consistency */
+    object-fit: contain;
+    object-position: center; 
 }
 .card-text{
     color: white;
