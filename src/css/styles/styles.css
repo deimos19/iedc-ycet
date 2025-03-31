@@ -11,7 +11,7 @@ body{
 }
 .main-nav-link{
     color: #b950ff !important;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 .hero-heading{
     /* width: fit-content; */
