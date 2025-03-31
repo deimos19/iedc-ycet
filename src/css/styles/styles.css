@@ -196,3 +196,6 @@ span{
     text-align: center;
     width: 100%;
 }
+input::placeholder{
+    color: rgb(156, 156, 156) !important;
+}
