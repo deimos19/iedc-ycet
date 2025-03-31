@@ -10,7 +10,8 @@ body{
     color: white;
 }
 .main-nav-link{
-    color: #b950ff !important;
+    /* color: #b950ff !important; */
+    color: rgb(199, 199, 199) !important;
     /* font-weight: bold; */
 }
 .hero-heading{
