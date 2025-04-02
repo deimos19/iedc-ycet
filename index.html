@@ -157,20 +157,17 @@
             landingPage.style.transform = "translateY(-100vh)";
             landingPage.style.transition = "transform 1.5s ease-in-out";
     
-            // Wait for animation to complete before redirecting
             setTimeout(() => {
-                window.location.href = "home.html";  // Redirect to the actual homepage
+                window.location.href = "home.html";
             }, 1500);
         }
     
-        // Auto-launch after 5 seconds
         setTimeout(moveUpAndRedirect, 5000);
 
-        // Generate floating tech particles
         function createTechParticles() {
             const techAnimation = document.getElementById("techAnimation");
             const symbols = ["⌘", "⚙", "⌨", "✦", "♦", "∑", "Ω", "π", "β", "Δ"];
-            for (let i = 0; i < 200; i++) {
+            for (let i = 0; i < 50; i++) {
                 let span = document.createElement("span");
                 span.classList.add("tech-symbol");
                 span.textContent = symbols[Math.floor(Math.random() * symbols.length)];
