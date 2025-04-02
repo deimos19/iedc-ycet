@@ -165,9 +165,24 @@
     
         // Auto-launch after 5 seconds
         setTimeout(moveUpAndRedirect, 5000);
+
+        // Generate floating tech particles
+        function createTechParticles() {
+            const techAnimation = document.getElementById("techAnimation");
+            const symbols = ["⌘", "⚙", "⌨", "✦", "♦", "∑", "Ω", "π", "β", "Δ"];
+            for (let i = 0; i < 200; i++) {
+                let span = document.createElement("span");
+                span.classList.add("tech-symbol");
+                span.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                span.style.left = Math.random() * 100 + "vw";
+                span.style.top = Math.random() * 100 + "vh";
+                span.style.animationDuration = Math.random() * 5 + 3 + "s";
+                span.style.fontSize = Math.random() * 1.5 + 0.8 + "rem";
+                techAnimation.appendChild(span);
+            }
+        }
+        createTechParticles();
     </script>
     
-    
-
 </body>
 </html>
