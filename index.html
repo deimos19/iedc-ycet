@@ -704,29 +704,40 @@
                           <p>Students of YCET can actively participate in IEDC by contributing to <strong>poster designing, event planning, innovative ideas, and more</strong>.</p>
                           <p>Your creativity and skills can help shape the future of innovation at YCET!</p>
                           
-                          <form action="submit_contribution.php" method="POST" class="text-start mt-3">
-                              <div class="mb-3">
-                                  <label for="name" class="form-label">Full Name</label>
-                                  <input type="text" class="form-control bg-dark text-white" id="name" name="name" required>
-                              </div>
-                              
-                              <div class="mb-3">
-                                  <label for="email" class="form-label">Email</label>
-                                  <input type="email" class="form-control bg-dark text-white" id="email" name="email" required>
-                              </div>
-                      
-                              <div class="mb-3">
-                                  <label for="department" class="form-label">Department</label>
-                                  <input type="text" class="form-control bg-dark text-white" id="department" name="department" required>
-                              </div>
-                      
-                              <div class="mb-3">
-                                  <label for="contribution" class="form-label">What would you like to contribute?</label>
-                                  <textarea class="form-control bg-dark text-white" id="contribution" name="contribution" rows="4" required placeholder="Describe your ideas, designs, or suggestions..."></textarea>
-                              </div>
-                      
-                              <button type="submit" class="btn btn-outline-primary">Submit</button>
+                          <form id="form" class="text-start" method="POST">
+                            <div class="mb-3">
+                              <label class="form-label text-white">Full Name</label>
+                              <input class="form-control bg-dark text-white" type="text" placeholder="Enter your Full Name" name="Name" />
+                            </div>
+                            
+                            <div class="mb-3">
+                              <label class="form-label text-white">Email</label>
+                              <input class="form-control bg-dark text-white" type="email" placeholder="Enter your Email" name="Email" />
+                            </div>
+                            
+                            <div class="mb-3">
+                              <label class="form-label text-white">Department</label>
+                              <input class="form-control bg-dark text-white" type="text" placeholder="Enter your Department" name="Department" />
+                            </div>
+                            
+                            <div class="mb-3">
+                              <label class="form-label text-white">Additional Information</label>
+                                <textarea
+                                  class="form-control bg-dark text-white"
+                                  placeholder="Any additional information"
+                                  name="Contribution"
+                                ></textarea>
+                            </div>
+                            
+                            <div id="message" class="alert alert-success" style="display: none; margin: 20px; font-weight: normal; padding: 8px;"></div>
+                            
+                            <div class="text-center">
+                              <p class="fw-bold">💪 Ready to Innovate?</p>
+                              <p id="responseMessage" class="mt-3"></p>
+                              <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
+                            </div>
                           </form>
+                          
                         </div>
 
 
@@ -879,6 +890,66 @@
           interval: 3000,
           ride: 'carousel'
       });
+  </script>
+  <script>
+    document.getElementById("form").addEventListener("submit", function (e) {
+      e.preventDefault(); // Prevent the default form submission
+      document.getElementById("message").textContent = "Submitting..";
+      document.getElementById("message").style.display = "block";
+      document.getElementById("submit-button").disabled = true;
+
+      // Collect the form data
+      var formData = new FormData(this);
+      var keyValuePairs = [];
+      for (var pair of formData.entries()) {
+        keyValuePairs.push(pair[0] + "=" + pair[1]);
+      }
+
+      var formDataString = keyValuePairs.join("&");
+
+      // Send a POST request to your Google Apps Script
+      fetch(
+        "https://script.google.com/macros/s/AKfycby222B_Z3vOJ8PR-PLci9X1vUJrlGtUBme0FpRVFrCNXuAU_l_xHpMgQ52L4quK6ML-/exec",
+        {
+          redirect: "follow",
+          method: "POST",
+          body: formDataString,
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8",
+          },
+        }
+      )
+        .then(function (response) {
+          // Check if the request was successful
+          if (response) {
+            return response; // Assuming your script returns JSON response
+          } else {
+            throw new Error("Failed to submit the form.");
+          }
+        })
+        .then(function (data) {
+          // Display a success message
+          document.getElementById("message").textContent =
+            "Data submitted successfully!";
+          document.getElementById("message").style.display = "block";
+          document.getElementById("message").style.backgroundColor = "green";
+          document.getElementById("message").style.color = "beige";
+          document.getElementById("submit-button").disabled = false;
+          document.getElementById("form").reset();
+
+          setTimeout(function () {
+            document.getElementById("message").textContent = "";
+            document.getElementById("message").style.display = "none";
+          }, 2600);
+        })
+        .catch(function (error) {
+          // Handle errors, you can display an error message here
+          console.error(error);
+          document.getElementById("message").textContent =
+            "An error occurred while submitting the form.";
+          document.getElementById("message").style.display = "block";
+        });
+    });
   </script>
   
     <script src="./src/js/bootstrap/bootstrap.bundle.min.js"></script>
