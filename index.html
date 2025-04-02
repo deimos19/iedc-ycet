@@ -16,7 +16,6 @@
             background-color: black;
         }
 
-        /* Landing Page */
         .landing-page {
             position: fixed;
             width: 100%;
@@ -33,14 +32,12 @@
             transition: transform 1.5s ease-in-out;
         }
 
-        /* Background Animation */
         @keyframes gradientMove {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* Floating Tech Particles */
         .tech-animation {
             position: absolute;
             width: 100%;
@@ -65,7 +62,6 @@
             100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
         }
 
-        /* Logo Animation */
         .logo {
             font-size: 3rem;
             font-weight: bold;
@@ -89,7 +85,6 @@
             100% { opacity: 0; transform: scale(1.2); }
         }
 
-        /* Typing Effect */
         .typing-text {
             font-size: 1.5rem;
             margin-top: 10px;
@@ -111,33 +106,20 @@
             50% { border-color: transparent; }
         }
 
-        /* Button */
-        .btn {
-            margin-top: 20px;
-            padding: 15px 30px;
-            background-color: #ff006e;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s forwards 4s;
-            transition: transform 0.3s;
+        .tech-globe {
+            position: absolute;
+            bottom: -100px;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(255,255,255,0.7), rgba(255,255,255,0.1));
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            animation: floatGlobe 10s linear infinite;
         }
 
-        .btn:hover {
-            transform: scale(1.1);
-        }
-
-        @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Rocket Launch Effect (Moves Page Up) */
-        .rocket-launch {
-            transform: translateY(-100vh) scale(1.1);
+        @keyframes floatGlobe {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-120vh); opacity: 0; }
         }
 
     </style>
@@ -148,7 +130,7 @@
         <div class="tech-animation" id="techAnimation"></div>
         <div class="logo">WELCOME TO IEDC YCET</div>
         <p class="typing-text">Launching innovation & entrepreneurship...</p>
-        <button class="btn" onclick="fadeOutAndRedirect()">Enter</button>
+        <div class="tech-globe"></div>
     </div>
 
     <script>
@@ -162,12 +144,12 @@
             }, 1500);
         }
     
-        setTimeout(moveUpAndRedirect, 6500);
+        setTimeout(moveUpAndRedirect, 5000);
 
         function createTechParticles() {
             const techAnimation = document.getElementById("techAnimation");
             const symbols = ["⌘", "⚙", "⌨", "✦", "♦", "∑", "Ω", "π", "β", "Δ"];
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 40; i++) {
                 let span = document.createElement("span");
                 span.classList.add("tech-symbol");
                 span.textContent = symbols[Math.floor(Math.random() * symbols.length)];
